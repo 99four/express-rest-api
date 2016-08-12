@@ -17,7 +17,16 @@ app.use(bodyParser.json());
 var port     = process.env.PORT || 8080; // set our port
 
 var mongoose   = require('mongoose');
-mongoose.connect('mongodb://node:node@novus.modulusmongo.net:27017/Iganiq8o'); // connect to our database
+
+mongoose.connection.on('connected', function () {
+  console.log('Mongoose default connection open');
+});
+
+mongoose.connection.on('error',function (err) {
+  console.log('Mongoose default connection error: ' + err);
+});
+
+mongoose.connect('mongodb://localhost:27017/misie'); // connect to our database
 var Bear     = require('./app/models/bear');
 
 // ROUTES FOR OUR API
