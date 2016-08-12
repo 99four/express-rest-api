@@ -1,9 +1,8 @@
 {
-  "name": "node-api",
+  "name": "node-rest-api",
   "main": "server.js",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/scotch-io/node-token-authentication"
+    "type": "git"
   },
   "scripts": {
     "start": "node server.js"
