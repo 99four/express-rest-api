@@ -14,5 +14,8 @@
     "morgan": "~1.0.0",
     "mongoose": "~3.6.13",
     "body-parser": "~1.0.1"
+  },
+   "devDependencies": {
+    "cors": "^2.7.1"
   }
 }

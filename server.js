@@ -3,10 +3,19 @@ const bodyParser = require('body-parser');
 const app        = express();
 const morgan     = require('morgan');
 const mongoose   = require('mongoose');
-const port       = process.env.PORT || 8080;
+const port       = process.env.PORT || 3000;
+const cors 		 = require('cors');
+
+const corsOptions = {
+  origin: 'http://localhost:8080'
+};
+
+app.use(cors(corsOptions));
 
 app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(bodyParser.json());
 
 mongoose.connection.on('connected', function () {
@@ -20,7 +29,7 @@ mongoose.connection.on('error', function (err) {
 mongoose.connect('mongodb://localhost:27017/misie');
 
 // REGISTER OUR ROUTES -------------------------------
-app.use('/api/bears', require('./routes/bears'));
+app.use('/api/footballers', require('./routes/footballers'));
 
 // START THE SERVER
 // =============================================================================
