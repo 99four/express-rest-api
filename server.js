@@ -26,7 +26,7 @@ mongoose.connection.on('error', function (err) {
   console.log('Mongoose default connection error: ' + err);
 });
 
-mongoose.connect('mongodb://localhost:27017/misie');
+mongoose.connect('mongodb://localhost:27017/footballers');
 
 // REGISTER OUR ROUTES -------------------------------
 app.use('/api/footballers', require('./routes/footballers'));

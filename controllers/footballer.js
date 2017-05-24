@@ -10,15 +10,23 @@ module.exports = {
   },
 
   save: (req, res) => {
-    console.log(req);
+    console.log(req.body);
     const footballer = new Footballer();
-    footballer.name = req.body.name;
+    footballer.firstName = req.body.firstName;
+    footballer.lastName = req.body.lastName;
+    footballer.country = req.body.country;
+    footballer.club = req.body.club;
 
     footballer.save(function(err) {
       if (err)
         res.send(err);
 
-      res.json({ message: 'Footballer created!', name: footballer.name, res: 'fdsfdsfs' });
+      res.json({ 
+        message: 'Footballer created!', 
+        firstName: footballer.firstName, 
+        lastName: footballer.lastName, 
+        country: footballer.country,
+        club: footballer.club });
     });
   },
 
@@ -36,7 +44,10 @@ module.exports = {
       if (err)
         res.send(err);
 
-      footballer.name = req.body.name;
+      footballer.firstName = req.body.firstName;
+      footballer.lastName = req.body.lastName;
+      footballer.country = req.body.country;
+      footballer.club = req.body.club;
       footballer.save(function(err) {
         if (err)
           res.send(err);
@@ -48,6 +59,8 @@ module.exports = {
   },
 
   remove: (req, res) => {
+    console.log('removing.....');
+    console.log(req.params);
     Footballer.remove({
       _id: req.params.footballer_id
     }, function(err, footballer) {
